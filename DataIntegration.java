@@ -1,3 +1,8 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * 
  */
@@ -13,12 +18,56 @@ public class DataIntegration {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		String x = null;
 		int c = 1;
-//		while(c > 0)
-//		{
-//			System.out.println("Add Data('a' or 'A')");
-//		}
-		System.out.println(Menu());
+		Scanner keyboard = new Scanner(System.in);
+		ArrayList<String> Terms = new ArrayList<String>();
+		ArrayList<String> Relationships = new ArrayList<String>();
+		ArrayList<String> Files = new ArrayList<String>();
+		while(c > 0)
+		{
+			System.out.println(Menu());
+			x = keyboard.nextLine();
+			switch(x)
+			{
+				case "A":
+					System.out.println("What is the name of the file you would like to add(inlcude extension");
+					String t = keyboard.nextLine();
+					File file = new File(t);
+					int i = 0;
+					try {
+						Scanner out = new Scanner(file);
+						
+						while( out.hasNextLine())
+						{
+							
+							String add = out.nextLine();
+							System.out.println(add);
+							//System.out.println("We have read " + i + " lines from the file");
+						}
+						
+						} 
+					catch (FileNotFoundException e) {
+					System.out.println("This file cannot be found");
+						}
+					System.out.println("We have read " + i + " lines from the file");
+					break;
+				case "a":
+					break;
+				case "R":
+					break;
+				case "r":
+					break;
+				case "e":
+					break;
+				case "E":
+					c = 0;
+					break;
+				default:
+					System.out.println("Invalid command");
+			}
+		}
+		
 	}
 	public static String Menu()
 	{
